@@ -23,10 +23,10 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use('/cashlead-api', routes); 
+app.use('/cryptolead-api', routes); 
 
 app.get('/', (req,res)=>{
-    res.json({ info: 'cashlead Api Version 1.0.0' })
+    res.json({ info: 'cryptolead Api Version 1.0.0' })
 })
 
 app.listen(PORT, ()=>console.log(`server started at ${PORT} `))

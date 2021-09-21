@@ -74,7 +74,7 @@ exports.updateProfileInfo = async (req, res) =>{
         const user = await User.findByIdAndUpdate(userId, { 
             firstname,
             lastname,
-            phoneNumber: parseInt(phone),
+            phoneNumber: phone,
             education,
             dob,
             profileUpdated: true

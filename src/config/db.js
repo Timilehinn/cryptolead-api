@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 module.exports = (callback) => {
   mongoose.set('useFindAndModify', false);
-    mongoose.connect(process.env.LOCAL_DB, {
+    mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useFindAndModify: false,
     useCreateIndex: true,
@@ -12,7 +12,7 @@ module.exports = (callback) => {
 
   let db = mongoose.connection;
   db.on('open', function () {
-    console.log(`connected to DB -> ${process.env.LOCAL_DB}`);
+    console.log(`connected to DB -> ${process.env.DATABASE}`);
   });
 
   db.on('error', function (error) {
