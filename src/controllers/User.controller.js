@@ -118,6 +118,26 @@ exports.removeBankInfo = async (req, res) =>{
     
 }
 
+
+
+
+exports.depositCash = async (req, res) =>{
+    try{
+        const { userId } = req.params;
+        console.log(req.body)
+        const bal = await User.findOne({_id: userId});
+        const user = await User.findByIdAndUpdate(userId, { 
+            wallet_balance: parseInt(bal.wallet_balance + 25000)
+        },{new: true})
+        return res.json({ message: 'Cash deposited successfully', status: true, details: user });
+    }catch(err){
+        console.log(err.message)
+        res.json({ message: 'An error occurred', status: false, error: err.message })
+    }
+    
+}
+
+
 exports.isUserAuth = async (req,res) =>{
     console.log(req.userId)
     User.findOne({ _id: req.userId })
